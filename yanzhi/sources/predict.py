@@ -22,7 +22,7 @@ def load_trained_model(model_path, device):
 
 
 def scores(num):
-    score = 55 + (num - 1.02) / (4.75 - 1.02) * 45
+    score = 40 + (num - 1.02) / (4.75 - 1.02) * 60
     if score > 100:
         score = score - 10
     return score.item()

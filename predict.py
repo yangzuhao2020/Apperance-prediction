@@ -19,7 +19,7 @@ def get_color(idx):
 
 
 class Detector(object):
-    def __init__(self, weight_path, conf_threshold=0.2, iou_threshold=0.5, save_path="save"):
+    def __init__(self, weight_path, conf_threshold=0.7, iou_threshold=0.5, save_path="save"):
         self.device = device
         self.model = YOLOv10(weight_path)
         self.conf_threshold = conf_threshold  # 置信度
@@ -108,8 +108,8 @@ class Detector(object):
                     f"{str(bbox_label)}/{str(scores)}",  # 图像上添加文本标签
                     (xmin, ymin - 10),  # 标签卫浴图像的左上角！！
                     cv2.FONT_HERSHEY_SIMPLEX,
-                    2,  # 字体类型和字体大小！
-                    get_color(30),
+                    1,  # 字体类型和字体大小！
+                    get_color(50),
                     2,  # 文本的颜色，由 get_color 函数生成。
                 )  # 给检测框添加表情 和 颜值得分
 
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     )  # 权重
     parser.add_argument(
         "--source",
-        default=r"dataset/videos/video1.mp4",
+        default=r"dataset/photo", # 处理路径
         type=str,
         help="img or video(.mp4)path",
     )  # 图片或者视频的地址
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--conf_thre", 
         type=float, 
-        default=0.5, 
+        default=0.8, 
         help="conf_thre"
     )  # 置信度
     parser.add_argument(
